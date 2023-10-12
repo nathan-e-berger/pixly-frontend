@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function ImageForm() {
@@ -15,6 +16,7 @@ function ImageForm() {
 
   function handleChange(evt) {
     const { name, value } = evt.target;
+    const navigate = useNavigate()
     setFormData(f => ({
       ...f,
       [ name ]: value,
@@ -22,19 +24,18 @@ function ImageForm() {
   }
 
   function handleFile(evt) {
-
-
     setFile(evt.target.files[ 0 ]);
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     const formInput = new FormData();
     formInput.append("file", file)
     for (const [ name, value ] of Object.entries(formData)) {
       formInput.append(name, value);
     }
-    console.log(formInput)
+    const image = await upload(formInput)
+    navigate(`/image/${image.id}/edit`)
   }
 
   return (
