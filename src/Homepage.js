@@ -1,12 +1,15 @@
+import ImageCard from "./ImageCard";
+
 function Homepage({ images }) {
+    console.log("images@HOMEPAGE", images);
     return (
         <>
-            {images.map(image => (
+            {images.images.map(image => (
                 <ImageCard key={image.id} image={image} />
             )
             )}
         </>
-    )
+    );
 }
 
 export default Homepage;
