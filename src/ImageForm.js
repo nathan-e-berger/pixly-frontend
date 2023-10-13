@@ -24,26 +24,30 @@ function ImageForm({ upload }) {
   }
 
   function handleFile(evt) {
+    console.log("File @IMageFOrm", evt.target.files[0]);
     setFile(evt.target.files[0]);
   }
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const formInput = new FormData();
+    const formInput = new FormData;
     formInput.append("file", file);
     for (const [name, value] of Object.entries(formData)) {
       formInput.append(name, value);
     }
     const image = await upload(formInput);
-    navigate(`/image/${image.id}/edit`);
+    console.log("image@ImageForm", image.image);
+    navigate(`/image/${image.image.id}/edit`);
   }
 
   return (
-    <form className="ImageForm" onSubmit={handleSubmit}>
+    <form className="ImageForm"
+      onSubmit={handleSubmit}
+      encType="multipart/form-data">
       <input onChange={handleFile}
         name="file"
         type="file"
-        value=""
+        value={file.file}
         className="file-field" />
       <input onChange={handleChange}
         name="title"

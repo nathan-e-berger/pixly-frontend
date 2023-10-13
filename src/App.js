@@ -11,7 +11,7 @@ import Api from './Api';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState(null);
-  console.log("imagesssss", images);
+  // console.log("imagesssss", images);
 
   useEffect(() => {
     async function initialFetch() {
@@ -25,6 +25,8 @@ function App() {
 
   async function upload(formData) {
     const image = await Api.create(formData);
+    console.log("image@APPPP", image);
+    return image;
   }
 
   if (isLoading) return <p>LOADING...</p>;
@@ -32,7 +34,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <RoutesList images={images} />
+        <RoutesList images={images} upload={upload} />
         <NavBar />
       </BrowserRouter>
     </>
