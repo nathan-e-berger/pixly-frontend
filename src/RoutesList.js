@@ -3,6 +3,12 @@ import ImageForm from "./ImageForm";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 
+/** Function to create a list of routes for the BrowserRouter
+ *  props: images, upload (fn)
+ *  state: none
+ *
+ *  App -> RoutesList -> {Homepage, ImageEditor, ImageForm}
+ */
 function RoutesList({ images, upload }) {
   return (
     <Routes>

@@ -14,7 +14,6 @@ function ImageForm({ upload }) {
 
   const navigate = useNavigate();
 
-
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(f => ({
@@ -36,7 +35,7 @@ function ImageForm({ upload }) {
       formInput.append(name, value);
     }
     const image = await upload(formInput);
-    console.log("image@ImageForm", image.image);
+    console.log("image@ImageForm", image);
     navigate(`/image/${image.image.id}/edit`);
   }
 
@@ -48,7 +47,8 @@ function ImageForm({ upload }) {
         name="file"
         type="file"
         value={file.file}
-        className="file-field" />
+        className="file-field"
+        required />
       <input onChange={handleChange}
         name="title"
         value={formData.title}
@@ -58,17 +58,20 @@ function ImageForm({ upload }) {
         name="keyword1"
         value={formData.keyword1}
         className="keyword=field"
-        placeholder="keyword" />
+        placeholder="keyword"
+        required />
       <input onChange={handleChange}
         name="keyword2"
         value={formData.keyword2}
         className="keyword=field"
-        placeholder="keyword" />
+        placeholder="keyword"
+        required />
       <input onChange={handleChange}
         name="keyword3"
         value={formData.keyword3}
         className="keyword=field"
-        placeholder="keyword" />
+        placeholder="keyword"
+        required />
       <button type="submit">Submit</button>
     </form>
   );

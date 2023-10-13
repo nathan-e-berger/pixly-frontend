@@ -20,12 +20,13 @@ function App() {
       setIsLoading(false);
     }
     initialFetch();
-  }, []);
+  }, [isLoading]);
 
 
   async function upload(formData) {
     const image = await Api.create(formData);
-    console.log("image@APPPP", image);
+    setImages(images);
+    setIsLoading(true);
     return image;
   }
 
