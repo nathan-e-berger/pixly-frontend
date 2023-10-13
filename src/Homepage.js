@@ -7,7 +7,6 @@ import ImageCard from "./ImageCard";
  * App -> RoutesList -> Homepage -> ImageCard(s)
  */
 function Homepage({ images }) {
-    console.log("images@HOMEPAGE", images);
     return (
         <>
             {images.images.map(image => (

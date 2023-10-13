@@ -6,7 +6,7 @@ const { Jimp } = window;
  *
  * Logic is supplied by jimp at "https://github.com/jimp-dev/jimp"
  *
- * props: imageUrl, filter
+ * props: imageUrl, filter, upload (fn)
  * state:
  * -jimpImage (pre encoded image)
  * -image (base64 encoded image)
@@ -70,10 +70,6 @@ function JimpFilter({ imageUrl, filter }) {
       transformImage();
     }
   }, [jimpImage, filter]);
-
-  function handleChange(evt) {
-
-  }
 
   return image && jimpImage ? (
     <>

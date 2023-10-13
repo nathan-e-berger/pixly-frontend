@@ -1,4 +1,3 @@
-
 /** Function renders card with image
  * props: image {image}, filter (jimp filter)
  * state: none

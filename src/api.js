@@ -4,10 +4,7 @@ const BASE_URL = "http://localhost:3001";
  * Static class that houses  methods for data retreival from the Pixly backend
  * server.
  *
- * Methods are as follows:
- * -create
- * -get
- *
+ * Methods: create(), get()
  */
 class Api {
 

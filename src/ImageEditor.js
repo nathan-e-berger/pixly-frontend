@@ -17,10 +17,11 @@ function ImageEditor({ images }) {
   function handleChange(evt) {
     setFilter(evt.target.value);
   }
+
   return (
     <>
       <h1>Filter</h1>
-      <div onChange={handleChange}>
+      <form onChange={handleChange}>
         <input
           type="radio"
           value="blur"
@@ -56,10 +57,11 @@ function ImageEditor({ images }) {
           checked={filter === "normalize"}
         />
         <span>Normalize</span>
-      </div>
+      </form>
       <JimpFilter
         imageUrl={image.s3_url}
-        filter={filter} />
+        filter={filter}
+      />
     </>
   );
 

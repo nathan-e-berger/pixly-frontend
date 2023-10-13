@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /** Function renders form for image upload
- * props: upload (fn)
+ * props: upload()
  * state: formData, file
  *
  * App -> RoutesList -> ImageForm
@@ -28,7 +28,6 @@ function ImageForm({ upload }) {
   }
 
   function handleFile(evt) {
-    console.log("File @IMageFOrm", evt.target.files[0]);
     setFile(evt.target.files[0]);
   }
 
@@ -40,7 +39,6 @@ function ImageForm({ upload }) {
       formInput.append(name, value);
     }
     const image = await upload(formInput);
-    console.log("image@ImageForm", image);
     navigate(`/image/${image.image.id}/edit`);
   }
 
