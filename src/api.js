@@ -1,6 +1,5 @@
 const BASE_URL = "http://localhost:3001";
 
-
 /**
  * Static class that houses  methods for data retreival from the Pixly backend
  * server.
@@ -11,12 +10,11 @@ const BASE_URL = "http://localhost:3001";
  *
  */
 class Api {
-    //TODO: remove console log
+
     /** sends newly created image to Pixly backend and returns image for editing */
     static async create(formData) {
         const response = await fetch(`${BASE_URL}/upload`, { method: "POST", body: formData });
         const data = await response.json();
-        console.log("data@API", data);
         return data;
     }
 
@@ -27,13 +25,6 @@ class Api {
         const data = await response.json();
         return data;
     }
-
-    // static async getImage(id) {
-    //     const response = await fetch(`${BASE_URL}/${id}`);
-    //     const data = await response.json();
-    //     return data;
-    // }
-
 }
 
 export default Api;

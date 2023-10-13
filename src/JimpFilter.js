@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
 import 'jimp/browser/lib/jimp';
 const { Jimp } = window;
-const BASE_S3_URL = "https://r33-pixly.s3.amazonaws.com/";
 
+/** Function renders image with jimp filter applied
+ *
+ * Logic is supplied by jimp at "https://github.com/jimp-dev/jimp"
+ *
+ * props: imageUrl, filter
+ * state:
+ * -jimpImage (pre encoded image)
+ * -image (base64 encoded image)
+ * -transformedImage (result after filter applied)
+ *
+ * App -> RoutesList -> ImageEditor -> JimpFilter  -> TransformedImage
+ */
 function JimpFilter({ imageUrl, filter }) {
-  console.log("imageURl@Jimp", imageUrl);
   const [jimpImage, setJimpImage] = useState(undefined);
-  // const imageUrl = `${BASE_S3_URL}${imagePic}`;
-
   const [image, setImage] = useState(undefined);
   const [transformedImage, setTransformedImage] = useState(undefined);
-  // const [filterValue, setFilterValue] = useState();
 
   // loading an image every time imageUrl changes
   useEffect(() => {
     const loadImage = async () => {
+
       // generating the Jimp data structure
       // loading an image from an URL
       const jimpImage = await Jimp.read(imageUrl);
@@ -70,11 +78,6 @@ function JimpFilter({ imageUrl, filter }) {
   return image && jimpImage ? (
     <>
       <h1>Transformed Image</h1>
-      {/* <form className="FilterInputs">
-        <input name="filter"
-          value={filterData.filter}>
-        </input>
-      </form> */}
       <img
         className="transformedImage"
         src={transformedImage}

@@ -5,13 +5,15 @@ import NavBar from "./NavBar";
 import { useEffect, useState } from 'react';
 import Api from './Api';
 
-/**
- *  BrowserRouter, NavBar, SearchBar, ImageForm, ImageEditor
+/** Function renders entire app and images on load
+ * props: none
+ * state: isLoading, images [{image}, {image}, ...]
+ *
+ * App ->  RoutesList, NavBar -> ImageForm, ImageEditor
  */
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState(null);
-  // console.log("imagesssss", images);
 
   useEffect(() => {
     async function initialFetch() {
@@ -22,11 +24,11 @@ function App() {
     initialFetch();
   }, [isLoading]);
 
-
   async function upload(formData) {
     const image = await Api.create(formData);
+    const images = await Api.get();
     setImages(images);
-    setIsLoading(true);
+    setIsLoading(false);
     return image;
   }
 

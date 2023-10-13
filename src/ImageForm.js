@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
+/** Function renders form for image upload
+ * props: upload (fn)
+ * state: formData, file
+ *
+ * App -> RoutesList -> ImageForm
+ */
 function ImageForm({ upload }) {
   const initialFormData = {
     title: "",
