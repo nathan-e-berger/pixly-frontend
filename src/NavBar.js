@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-
+import { Button } from "reactstrap"
 /** Function renders NavBar
  *
  * App -> NavBar -- links to -> Homepage, ImageEditor, ImageForm
@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
   return (
     <>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/ImageForm">Form</NavLink>
+      <Button color="light" size="lg"><NavLink to="/">Home</NavLink></Button>
+      <Button color="light" size="lg"><NavLink to="/ImageForm">Form</NavLink></Button>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Col, Button, Input, Form, FormGroup, Label, Row } from 'reactstrap';
 
 /** Function renders form for image upload
  * props: upload()
@@ -43,40 +44,68 @@ function ImageForm({ upload }) {
   }
 
   return (
-    <form className="ImageForm"
+    <Form
+      className="m-3"
       onSubmit={handleSubmit}
       encType="multipart/form-data">
-      <input onChange={handleFile}
-        name="file"
-        type="file"
-        value={file.file}
-        className="file-field"
-        required />
-      <input onChange={handleChange}
-        name="title"
-        value={formData.title}
-        className="title-field"
-        placeholder="title" />
-      <input onChange={handleChange}
-        name="keyword1"
-        value={formData.keyword1}
-        className="keyword=field"
-        placeholder="keyword"
-        required />
-      <input onChange={handleChange}
-        name="keyword2"
-        value={formData.keyword2}
-        className="keyword=field"
-        placeholder="keyword"
-        required />
-      <input onChange={handleChange}
-        name="keyword3"
-        value={formData.keyword3}
-        className="keyword=field"
-        placeholder="keyword"
-        required />
-      <button type="submit">Submit</button>
-    </form>
+      <Row className="align-items-center g-3">
+        <Col md={12}>
+          <FormGroup>
+            <Label htmlFor="title">Title</Label>
+            <Input onChange={handleChange}
+              name="title"
+              value={formData.title}
+              className="title-field"
+              placeholder="Enter title..." />
+          </FormGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Label bsSize="sm">
+          Keywords
+        </Label>
+        <Col md={4}>
+          <Input onChange={handleChange}
+            name="keyword1"
+            value={formData.keyword1}
+            className="keyword1-field"
+            placeholder="Enter keyword..." />
+        </Col>
+        <Col md={4}>
+          <Input onChange={handleChange}
+            name="keyword2"
+            value={formData.keyword2}
+            className="keyword2-field"
+            placeholder="Enter keyword..." />
+        </Col>
+        <Col md={4}>
+          <Input onChange={handleChange}
+            name="keyword3"
+            value={formData.keyword3}
+            className="keyword3-field"
+            placeholder="Enter keyword..." />
+        </Col>
+      </Row>
+      <Row className="mt-2 row-cols-lg-auto g-3 align-items-center">
+        <Col md={6}>
+          <Input
+            onChange={handleFile}
+            name="file"
+            type="file"
+            value={file.file}
+            className="file-field"
+            required />
+        </Col>
+        <Col md={6}>
+          <Button
+            type="submit"
+            block
+            color="dark"
+            outline
+            size="sm">Submit</Button>
+        </Col>
+      </Row>
+    </Form>
   );
 }
 

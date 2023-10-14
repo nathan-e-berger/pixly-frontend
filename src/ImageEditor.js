@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ImageCard from "./ImageCard";
 import JimpFilter from "./JimpFilter";
 
+
 /** Function for editing images with Jimp editor
  *  props: images [{image}, {image}, ...]
  *  state: filter
@@ -17,11 +18,10 @@ function ImageEditor({ images }) {
   function handleChange(evt) {
     setFilter(evt.target.value);
   }
-
   return (
     <>
       <h1>Filter</h1>
-      <form onChange={handleChange}>
+      <div onChange={handleChange}>
         <input
           type="radio"
           value="blur"
@@ -57,11 +57,10 @@ function ImageEditor({ images }) {
           checked={filter === "normalize"}
         />
         <span>Normalize</span>
-      </form>
+      </div>
       <JimpFilter
         imageUrl={image.s3_url}
-        filter={filter}
-      />
+        filter={filter} />
     </>
   );
 

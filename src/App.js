@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import NavBar from "./NavBar";
 import { useEffect, useState } from 'react';
 import Api from './Api';
+import { Container, Col } from 'reactstrap';
 
 /** Function renders entire app and images on load
  * props: none
@@ -35,12 +36,12 @@ function App() {
   if (isLoading) return <p>LOADING...</p>;
 
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <NavBar />
+      <Col md={6}>
         <RoutesList images={images} upload={upload} />
-        <NavBar />
-      </BrowserRouter>
-    </>
+      </Col>
+    </BrowserRouter>
   );
 }
 
